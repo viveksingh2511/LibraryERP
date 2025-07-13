@@ -5,7 +5,7 @@ function Header() {
     const navigate = useNavigate();
     return (
         <>
-            <nav className="navbar navbar-expand-lg navbar-light bg-light">
+            <nav className="navbar navbar-expand-lg navbar-light bg-primary">
                 <div className="container-fluid d-flex">
                     <Link className="navbar-brand col-2" to="/application">Logo</Link>
                     <button className="btn btn-primary"
@@ -13,8 +13,8 @@ function Header() {
                         data-bs-toggle="offcanvas"
                         data-bs-target="#offcanvasSidebar"
                         aria-controls="offcanvasSidebar"><i class="bi bi-list"></i></button>
-                    <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-                        <button className="btn btn-outline-success" onClick={() => { navigate('/') }} type="button">Logout</button>
+                    <div className="collapse navbar-collapse justify-content-end pe-3" id="navbarSupportedContent">
+                        <button className="btn btn-danger" onClick={() => { navigate('/') }} type="button">Logout</button>
                     </div>
                 </div>
             </nav>

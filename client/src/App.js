@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import './index.css'
+import Books from './components/Books';
 
 
 function App() {
@@ -13,7 +14,8 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<MyLogin/>}></Route>
-        <Route path='/application' element={<WelcomePage/>}></Route>
+        <Route path='/dashboard' element={<WelcomePage/>}></Route>
+        <Route path='/books' element={<Books/>}></Route>
       </Routes>
     </BrowserRouter>
   )

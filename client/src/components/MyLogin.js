@@ -12,7 +12,7 @@ function MyLogin() {
     e.preventDefault();
     console.log('Email:', email, 'Password:', password);
     if (email === 'vivek@gmail.com' && password ===  '1234') {
-      navigate('/application');
+      navigate('/dashboard');
     } else {
       alert('Invalid Login')
     }

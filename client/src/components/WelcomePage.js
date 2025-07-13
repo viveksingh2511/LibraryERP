@@ -7,6 +7,7 @@
             <>
                 <Header/>
                 <Sidebar/>
+                <div className="p-3 text-white bg-dark">Welcome to Dashboard</div>
             </>
         )
     }

@@ -2,6 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 export default function Sidebar() {
+    const closeSidebar = () => {
+        document.querySelector('.offcanvas-backdrop')?.remove();
+    };
     return (
         <div
             className="offcanvas offcanvas-start"
@@ -20,10 +23,10 @@ export default function Sidebar() {
             </div>
             <div className="offcanvas-body">
                 <ul className="nav flex-column">
-                    <li className="nav-item"><Link className="nav-link" to="/dashboard">Dashboard</Link></li>
-                    <li className="nav-item"><Link className="nav-link" to="/settings">Settings</Link></li>
-                    <li className="nav-item"><Link className="nav-link" to="/profile">Profile</Link></li>
-                    <li className="nav-item"><Link className="nav-link" to="/logout">Logout</Link></li>
+                    <li className="nav-item"><Link className="nav-link" to="/dashboard" onClick={closeSidebar}>Dashboard</Link></li>
+                    <li className="nav-item"><Link className="nav-link" to="/books" onClick={closeSidebar}>Books</Link></li>
+                    <li className="nav-item"><Link className="nav-link" to="/issue-return" onClick={closeSidebar}>Issue/Return</Link></li>
+                    <li className="nav-item"><Link className="nav-link" to="/staff" onClick={closeSidebar}>Staff Management</Link></li>
                 </ul>
             </div>
         </div>
