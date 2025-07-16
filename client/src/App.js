@@ -7,6 +7,8 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import './index.css'
 import Books from './components/Books';
+import IssueReturn from './components/Issue-Return';
+import Staff from './components/Staff';
 
 
 function App() {
@@ -16,6 +18,8 @@ function App() {
         <Route path='/' element={<MyLogin/>}></Route>
         <Route path='/dashboard' element={<WelcomePage/>}></Route>
         <Route path='/books' element={<Books/>}></Route>
+        <Route path='/issue-return' element={<IssueReturn/>}></Route>
+        <Route path='/staff' element={<Staff/>}></Route>
       </Routes>
     </BrowserRouter>
   )
