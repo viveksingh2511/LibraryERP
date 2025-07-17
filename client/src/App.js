@@ -9,6 +9,7 @@ import './index.css'
 import Books from './components/Books';
 import IssueReturn from './components/Issue-Return';
 import Staff from './components/Staff';
+import Addbook from './components/Addbook';
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Route path='/books' element={<Books/>}></Route>
         <Route path='/issue-return' element={<IssueReturn/>}></Route>
         <Route path='/staff' element={<Staff/>}></Route>
+        <Route path='/addbook' element={<Addbook/>}></Route>
       </Routes>
     </BrowserRouter>
   )

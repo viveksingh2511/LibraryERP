@@ -7,7 +7,8 @@ function Header() {
         <>
             <nav className="navbar navbar-expand-lg navbar-light bg-primary">
                 <div className="container-fluid d-flex">
-                    <Link className="navbar-brand col-2" to="/application">Logo</Link>
+                    <Link className="navbar-brand col-2" to="/dashboard">
+                    <img alt='img' src='https://gnpsmt.edunexttechnologies.com/images/nav_icons/library_management.png'/></Link>
                     <button className="btn btn-primary"
                         type="button"
                         data-bs-toggle="offcanvas"
