@@ -3,56 +3,56 @@ import Header from './Header'
 import Sidebar from './Sidebar'
 import { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 function Addbook() {
 
-const [user,setuser]=useState({
-  booktitle:"",
-  library:"",
-  booktype:"",
-  author:"",
-  accessionno:"",
-  bookimg:""
-});
+    const navigate = useNavigate()
 
-    const updatefield = (e)=>{
+    const [user, setuser] = useState({
+        booktitle: "",
+        library: "",
+        booktype: "",
+        author: "",
+        accessionno: "",
+        bookimg: ""
+    });
+
+    const updatefield = (e) => {
         // console.log(e.target.value);
-        const {name,value} = e.target;
-        setuser((preval)=>{
-          return{
-            ...preval,
-            [name]:value
-          }
+        const { name, value } = e.target;
+        setuser((preval) => {
+            return {
+                ...preval,
+                [name]: value
+            }
         })
-      }
-
-      const addbook = async(req,res)=>{
-    if(user.booktitle==="")
-    {
-      toast.error("booktitle is blank",{position: "top-left",autoClose: 1000});
     }
-    else
-    {
-  const {booktitle,library,booktype,author,accessionno,bookimg}=user;
-const postdata = await fetch("http://localhost:8700/addbookpage", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                 booktitle,library,booktype,author,accessionno,bookimg
-            })
-        })
-        const data = await postdata.json();
-        console.log(data.status);
-        if(data.status===255)
-        {
-          toast.success("successfully registor user",{position: "top-left",autoClose: 2000});
-        //   setTimeout(()=>{
-        //     navigation("/userlogin");
-        //   },2000)
-        }
-      }
 
-      }
+    const addbook = async (req, res) => {
+        if (user.booktitle === "") {
+            toast.error("booktitle is blank", { position: "top-left", autoClose: 1000 });
+        }
+        else {
+            const { booktitle, library, booktype, author, accessionno, bookimg } = user;
+            const postdata = await fetch("http://localhost:8700/addbookpage", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    booktitle, library, booktype, author, accessionno, bookimg
+                })
+            })
+            const data = await postdata.json();
+            console.log(data.status);
+            if (data.status === 255) {
+                toast.success("successfully add book", { position: "top-left", autoClose: 2000 });
+                setTimeout(() => {
+                    navigate("/books");
+                }, 2000)
+            }
+        }
+
+    }
     return (
         <>
             <Header />
@@ -107,7 +107,7 @@ const postdata = await fetch("http://localhost:8700/addbookpage", {
                                 </div>
                                 <div className='col-md-6'>
                                     <div className="mb-3">
-                                        <input type='button' value="Add Book" className='btn btn-success' onClick={addbook}/>
+                                        <input type='button' value="Add Book" className='btn btn-success' onClick={addbook} />
                                         <input type='reset' value="Cancel" className='btn btn-danger ms-3' />
                                     </div>
                                 </div>
