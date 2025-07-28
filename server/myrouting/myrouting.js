@@ -1,5 +1,6 @@
 const express = require('express')
 const mydatapattern = require('../myschema/myschema')
+const empdatapattern = require('../myschema/myschema2')
 
 const myapp = express.Router();
 
@@ -10,7 +11,7 @@ myapp.get('/', (req, res) => {
 myapp.get('/home', (req, res) => {
     res.send("this is home page")
 })
-
+// book api
 myapp.post("/addbookpage", async (req, res) => {
     const { booktitle, library, booktype, author, accessionno, bookimg } = req.body;
     if (booktitle == '' || accessionno == '') {
@@ -80,6 +81,44 @@ myapp.patch("/updatebook/:id", async (req, res) => {
   }
 });
 
+// emp api
+myapp.post("/addstaff", async (req, res) => {
+    const { empname, contact, emptype, empcode, designation, empimg } = req.body;
+    if (empname == '' || empcode == '') {
+        const postdata = new empdatapattern({
+            empname, contact, emptype, empcode, designation, empimg
+        })
+        res.status(500).json({ data: postdata, status: 288, message: "faild addstaff" });
+    } else {
+        const postdata = new empdatapattern({
+            empname, contact, emptype, empcode, designation, empimg
+        })
+        await postdata.save();
+        res.status(200).json({data:postdata,status:255,message:"staff add successfully"});
+    }
+})
+
+myapp.get("/allstafflist", async (req,res)=>{
+    const allstaff = await empdatapattern.find();
+    res.status(200).json({allstaff:allstaff,status:220,message:"all staff list"})
+})
+
+myapp.delete("/deletestaffrecord/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const removestaffrecord = await empdatapattern.findByIdAndDelete(id);
+    console.log(removestaffrecord);
+    
+    if (!removestaffrecord) {
+      return res.status(404).json({ message: "Record not found" });
+    }
+
+    res.status(200).json({ message: "Selected data removed" });
+  } catch (err) {
+    console.error("Error deleting record:", err);
+    res.status(500).json({ error: "Failed to delete record" });
+  }
+});
 
 
 module.exports = myapp

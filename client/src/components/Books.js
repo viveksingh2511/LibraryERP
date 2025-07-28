@@ -65,7 +65,7 @@ function Books() {
                       <td className='align-content-around'>{book.accessionno}</td>
                       <td className='align-content-around'><img src={book.bookimg} width={50} height={50} alt='img' /></td>
                       <td className='align-content-around text-end'>
-                        <Link to={''} className="badge text-bg-warning ms-2 code-i"><MdOutlinePreview /></Link>
+                        <Link to={`/books/viewbook/${book._id}`} className="badge text-bg-warning ms-2 code-i"><MdOutlinePreview /></Link>
                         <Link to={`/books/editbook/${book._id}`} className="badge text-bg-warning ms-2 code-i"><FaUserEdit /></Link>
                         <span className="badge text-bg-danger ms-2 code-i" onClick={()=>deleterecord(book._id)}><MdDeleteForever /></span>
                       </td>

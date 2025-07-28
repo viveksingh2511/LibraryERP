@@ -29,30 +29,30 @@ function Addstaff() {
         })
     }
 
-    // const addbook = async (req, res) => {
-    //     if (user.booktitle === "") {
-    //         toast.error("booktitle is blank", { position: "top-left", autoClose: 1000 });
-    //     }
-    //     else {
-    //         const { booktitle, library, booktype, author, accessionno, bookimg } = user;
-    //         const postdata = await fetch("http://localhost:8700/addbookpage", {
-    //             method: "POST",
-    //             headers: { "Content-Type": "application/json" },
-    //             body: JSON.stringify({
-    //                 booktitle, library, booktype, author, accessionno, bookimg
-    //             })
-    //         })
-    //         const data = await postdata.json();
-    //         console.log(data.status);
-    //         if (data.status === 255) {
-    //             toast.success("successfully add book", { position: "top-left", autoClose: 2000 });
-    //             setTimeout(() => {
-    //                 navigate("/books");
-    //             }, 2000)
-    //         }
-    //     }
+    const addstaff = async (req, res) => {
+        if (user.empname === "") {
+            toast.error("name is blank", { position: "top-left", autoClose: 1000 });
+        }
+        else {
+            const { empname, contact, emptype, empcode, designation, empimg } = user;
+            const postdata = await fetch("http://localhost:8700/addstaff", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    empname, contact, emptype, empcode, designation, empimg
+                })
+            })
+            const data = await postdata.json();
+            console.log(data.status);
+            if (data.status === 255) {
+                toast.success("successfully add book", { position: "top-left", autoClose: 2000 });
+                setTimeout(() => {
+                    navigate("/staff");
+                }, 2000)
+            }
+        }
 
-    // }
+    }
     return (
         <>
             <Header />
@@ -107,7 +107,7 @@ function Addstaff() {
                                 </div>
                                 <div className='col-md-6'>
                                     <div className="mb-3">
-                                        <input type='button' value="Add Employee" className='btn btn-success' />
+                                        <input type='button' value="Add Employee" className='btn btn-success' onClick={addstaff}/>
                                         <input type='reset' value="Cancel" className='btn btn-danger ms-3' onClick={()=>navigate('/staff')}/>
                                     </div>
                                 </div>

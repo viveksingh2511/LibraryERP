@@ -5,7 +5,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 
-function Editbook() {
+function ViewBook() {
   const navigate = useNavigate();
   const { id } = useParams();
 
@@ -32,44 +32,6 @@ function Editbook() {
   useEffect(() => {
     singlebookdata();
   }, [id]);
-
-  const updatefield = (e) => {
-    const { name, value } = e.target;
-    setuser((preval) => ({
-      ...preval,
-      [name]: value
-    }));
-  };
-
-  // ✅ Update book using PATCH
-  const updatebook = async () => {
-    if (user.booktitle === "") {
-      toast.error("Book title is blank", { position: "top-left", autoClose: 1000 });
-      return;
-    }
-
-    try {
-      const res = await fetch(`http://localhost:8700/updatebook/${id}`, {
-        method: "PATCH", // ✅ PATCH not POST
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(user)
-      });
-
-      const data = await res.json();
-
-      if (data.status === 251) {
-        toast.success("Successfully updated book", { position: "top-left", autoClose: 2000 });
-        setTimeout(() => {
-          navigate("/books");
-        }, 2000);
-      } else {
-        toast.error("Update failed");
-      }
-    } catch (err) {
-      console.error(err);
-      toast.error("Something went wrong while updating");
-    }
-  };
 
   return (
     <>
@@ -104,7 +66,6 @@ function Editbook() {
                         name={field.name}
                         placeholder={field.placeholder || ""}
                         value={user[field.name]}
-                        onChange={updatefield}
                       />
                     </div>
                   </div>
@@ -112,7 +73,6 @@ function Editbook() {
 
                 <div className='col-md-6'>
                   <div className="mb-3">
-                    <input type='button' value="Update Book" className='btn btn-success' onClick={updatebook} />
                     <input type='reset' value="Cancel" className='btn btn-danger ms-3' onClick={()=>navigate('/books')}/>
                   </div>
                 </div>
@@ -126,4 +86,4 @@ function Editbook() {
   );
 }
 
-export default Editbook;
+export default ViewBook;
