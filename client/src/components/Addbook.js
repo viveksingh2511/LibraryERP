@@ -108,7 +108,7 @@ function Addbook() {
                                 <div className='col-md-6'>
                                     <div className="mb-3">
                                         <input type='button' value="Add Book" className='btn btn-success' onClick={addbook} />
-                                        <input type='reset' value="Cancel" className='btn btn-danger ms-3' />
+                                        <input type='reset' value="Cancel" className='btn btn-danger ms-3' onClick={()=>navigate('/books')}/>
                                     </div>
                                 </div>
 

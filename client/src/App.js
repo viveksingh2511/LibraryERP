@@ -11,6 +11,7 @@ import IssueReturn from './components/Issue-Return';
 import Staff from './components/Staff';
 import Addbook from './components/Addbook';
 import Editbook from './components/Editbook';
+import Addstaff from './components/Addstaff';
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
         <Route path='/issue-return' element={<IssueReturn/>}></Route>
         <Route path='/staff' element={<Staff/>}></Route>
         <Route path='/addbook' element={<Addbook/>}></Route>
+        <Route path='/addstaff' element={<Addstaff/>}></Route>
         <Route path='/books/editbook/:id' element={<Editbook/>}></Route>
       </Routes>
     </BrowserRouter>
