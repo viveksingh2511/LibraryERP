@@ -13,6 +13,8 @@ import Addbook from './components/Addbook';
 import Editbook from './components/Editbook';
 import Addstaff from './components/Addstaff';
 import ViewBook from './components/ViewBook';
+import Return from './components/Return';
+import EditStaff from './components/EditStaff';
 
 
 function App() {
@@ -22,10 +24,12 @@ function App() {
         <Route path='/' element={<MyLogin/>}></Route>
         <Route path='/dashboard' element={<WelcomePage/>}></Route>
         <Route path='/books' element={<Books/>}></Route>
-        <Route path='/issue-return' element={<IssueReturn/>}></Route>
+        <Route path='/issue' element={<IssueReturn/>}></Route>
+        <Route path='/return' element={<Return/>}></Route>
         <Route path='/staff' element={<Staff/>}></Route>
         <Route path='/addbook' element={<Addbook/>}></Route>
         <Route path='/addstaff' element={<Addstaff/>}></Route>
+        <Route path='/staff/editstaff/:id' element={<EditStaff/>}></Route>
         <Route path='/books/editbook/:id' element={<Editbook/>}></Route>
         <Route path='/books/viewbook/:id' element={<ViewBook/>}></Route>
       </Routes>

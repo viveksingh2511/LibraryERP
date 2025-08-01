@@ -25,7 +25,8 @@ export default function Sidebar() {
                 <ul className="nav flex-column">
                     <li className="nav-item"><Link className="nav-link" to="/dashboard" onClick={closeSidebar}>Dashboard</Link></li>
                     <li className="nav-item"><Link className="nav-link" to="/books" onClick={closeSidebar}>Books</Link></li>
-                    <li className="nav-item"><Link className="nav-link" to="/issue-return" onClick={closeSidebar}>Issue/Return</Link></li>
+                    <li className="nav-item"><Link className="nav-link" to="/issue" onClick={closeSidebar}>Issue</Link></li>
+                    <li className="nav-item"><Link className="nav-link" to="/return" onClick={closeSidebar}>Return</Link></li>
                     <li className="nav-item"><Link className="nav-link" to="/staff" onClick={closeSidebar}>Staff Management</Link></li>
                 </ul>
             </div>

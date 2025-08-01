@@ -18,7 +18,8 @@ const mydatas = mongoos.Schema({
     },
     bookimg:{
         type:String
-    }
+    },
+    
 })
 
 const myschimatype = mongoos.model('addbook',mydatas);

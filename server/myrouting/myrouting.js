@@ -103,6 +103,32 @@ myapp.get("/allstafflist", async (req,res)=>{
     res.status(200).json({allstaff:allstaff,status:220,message:"all staff list"})
 })
 
+myapp.get("/singlestaffrecord/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const singlestaff = await empdatapattern.findById(id);
+    if (!singlestaff) {
+      return res.status(404).json({ message: "Staff not found" });
+    }
+    res.status(200).json({ message: "Single staff data", mydata: singlestaff });
+  } catch (err) {
+    console.error("Error fetching single staff:", err);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+});
+
+myapp.patch("/updatestaff/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const updatedstaff = await empdatapattern.findByIdAndUpdate(id, req.body, { new: true });
+    res.status(200).json({ message: "Staff updated", status: 251, mydata: updatedstaff });
+  } catch (err) {
+    console.error("Error updating staff:", err);
+    res.status(500).json({ message: "Update failed" });
+  }
+});
+
+
 myapp.delete("/deletestaffrecord/:id", async (req, res) => {
   try {
     const { id } = req.params;

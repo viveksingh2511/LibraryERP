@@ -66,7 +66,7 @@ function Staff() {
                       <td className='align-content-around'>{staff.designation}</td>
                       <td className='align-content-around'><img src={staff.empimg} width={50} height={50} alt='img' /></td>
                       <td className='align-content-around text-end'>
-                        <Link to={``} className="badge text-bg-warning ms-2 code-i"><FaUserEdit /></Link>
+                        <Link to={`/staff/editstaff/${staff._id}`} className="badge text-bg-warning ms-2 code-i"><FaUserEdit /></Link>
                         <span className="badge text-bg-danger ms-2 code-i"  onClick={()=>deletestaffrecord(staff._id)}><MdDeleteForever /></span>
                       </td>
                     </tr>
