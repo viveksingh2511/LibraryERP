@@ -146,5 +146,51 @@ myapp.delete("/deletestaffrecord/:id", async (req, res) => {
   }
 });
 
+// assign book to emp api
+
+myapp.post('/assignbook/:bookId/:staffId', async (req, res) => {
+  const { bookId, staffId } = req.params;
+
+  try {
+    const updatedBook = await mydatapattern.findByIdAndUpdate(
+      bookId,
+      { assignedTo: staffId },
+      { new: true }
+    );
+
+    res.status(200).json({ message: "Book assigned to staff", data: updatedBook });
+  } catch (err) {
+    console.log("Assign error", err);
+    res.status(500).json({ message: "Assignment failed", status: "502" });
+  }
+});
+
+myapp.get('/assignreport', async(req,res)=>{
+  try {
+    const books = await mydatapattern.find({assignedTo:{$ne:null}}).populate('assignedTo')
+    res.json({allassigned: books})
+  } catch (err) {
+    res.status(500).json({ message: 'Fetch failed' });
+  }
+})
+
+myapp.post('/returnbook/:bookId', async (req, res) => {
+  try {
+    const updatedBook = await mydatapattern.findByIdAndUpdate(
+      req.params.bookId,
+      { assignedTo: null },
+      { new: true }
+    );
+
+    res.json({
+      message: 'Book returned successfully',
+      data: updatedBook
+    });
+  } catch (error) {
+    console.error('Return error:', error);
+    res.status(500).json({ message: 'Return failed' });
+  }
+});
+
 
 module.exports = myapp

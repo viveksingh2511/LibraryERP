@@ -61,8 +61,8 @@ function ViewBook() {
                     <div className="mb-3">
                       <label className="form-label text-dark">{field.label}</label>
                       <input
-                        type="text"
-                        className="form-control bg-body-secondary text-dark p-2"
+                        type="text" disabled
+                        className="form-control bg-body-secondary p-2 text-black-50"
                         name={field.name}
                         placeholder={field.placeholder || ""}
                         value={user[field.name]}
